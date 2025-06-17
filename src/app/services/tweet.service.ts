@@ -9,7 +9,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class TweetService {
-  private apiURL = 'http://localhost:8080/';
+  private apiURL = 'https://tweeter-springboot.onrender.com/';
 
   constructor(
     private http: HttpClient,
@@ -61,7 +61,7 @@ export class TweetService {
   }
 
   createTweet(text: string): Observable<Tweet> {
-    return this.http.post<Tweet>('http://localhost:8080/api/tweets', { tweet: text });
+    return this.http.post<Tweet>('https://tweeter-springboot.onrender.com/api/tweets', { tweet: text });
   }
   
 }

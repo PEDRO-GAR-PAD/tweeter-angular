@@ -18,7 +18,7 @@ export interface TweetReaction {
   providedIn: 'root'
 })
 export class ReactionService {
-  private baseUrl = 'http://localhost:8080/api/reactions';
+  private baseUrl = 'https://tweeter-springboot.onrender.com/api/reactions';
 
   constructor(
     private http: HttpClient,

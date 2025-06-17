@@ -11,7 +11,7 @@ import { StorageService } from './storage.service';
   providedIn: 'root'
 })
 export class UserService {
-  private apiURL = 'http://localhost:8080/';
+  private apiURL = 'https://tweeter-springboot.onrender.com/';
 
   constructor(
     private http: HttpClient,

@@ -9,7 +9,7 @@ import { retry, catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CommentService {
-  private baseUrl = 'http://localhost:8080/api/comments';
+  private baseUrl = 'https://tweeter-springboot.onrender.com/api/comments';
 
   constructor(
     private http: HttpClient,

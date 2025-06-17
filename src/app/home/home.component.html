@@ -1,10 +1,10 @@
 <!-- home.component.html -->
 <div class="home-container">
-  <p class="welcome">Welcome {{ username }}</p>
+  <p class="welcome">¡Bienvenido {{ username }}!</p>
 
   <!-- NUEVO TWEET -->
   <section class="panel new-tweet">
-    <h2>Nuevo Tweet</h2>
+    <h2>Nueva Publicación</h2>
     <form (ngSubmit)="addTweet()" class="new-tweet-form">
       <input
         type="text"
@@ -13,13 +13,13 @@
         name="tweetText"
         required
       />
-      <button type="submit" class="btn-tweet">Tweet</button>
+      <button type="submit" class="btn-tweet">Publicar</button>
     </form>
   </section>
 
-  <!-- TIMELINE -->
+  <!-- Publicaciones -->
   <section class="panel timeline">
-    <h2>Timeline</h2>
+    <h2>Publicaciones</h2>
     <div *ngFor="let tweet of tweets" class="tweet-card">
       <div class="tweet-header">
         #{{ tweet.id }} – {{ tweet.tweet }}
@@ -59,7 +59,7 @@
             name="comment-{{ tweet.id }}"
             required
           />
-          <button type="submit">Publicar</button>
+          <button type="submit">Comentar</button>
         </form>
       </div>
     </div>
