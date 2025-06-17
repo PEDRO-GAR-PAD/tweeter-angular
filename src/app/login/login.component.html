@@ -1,38 +1,37 @@
-<table border=1>
-  <tr>
-    <td> login CRM-uv  </td> <td>
-    <a routerLink="/">
-       cancel
-    </a>
-    </td>
-  </tr>
-  <tr>
-    <td> Email </td> <td> <input type="email" [(ngModel)]="email" > {{email}} </td>
-  </tr>
-  <tr>
-  <td> Password </td> <td> <input type="password" [(ngModel)]="password"> {{password }} </td>
-  </tr>
-  <tr>
-   <td></td> <td>
-  
-    <a routerLink="/forgot-password">
-       Forgot Password ?
-    </a>
-  
-  </td>
-  </tr>
-  <tr>
-  <td> </td> <td>
-           <button (click)="callLogin()"> log in </button>
-           {{ myLogin.user }}
-   </td>
-  </tr>
-  <tr>
-   <td></td> <td> new?
-  
-    <a routerLink="/newuser">
-      create account
-    </a>
-   </td>
-  </tr>
-  </table>
+<!-- login-card.component.html -->
+<div class="login-card">
+  <h2>Login CRM-uv</h2>
+  <form (ngSubmit)="callLogin()">
+    <div class="form-row">
+      <label for="email">Usuario</label>
+      <input
+        id="email"
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        placeholder="tu@correo.com"
+        required
+      />
+    </div>
+    <div class="form-row">
+      <label for="password">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="••••••••"
+        required
+      />
+    </div>
+    <div class="form-actions">
+      <button type="submit">Entrar</button>
+      <a routerLink="/">Cancelar</a>
+    </div>
+    <div class="form-links">
+      <a routerLink="/forgot-password">¿Olvidaste tu contraseña?</a>
+      <span>•</span>
+      <a routerLink="/newuser">Crear cuenta</a>
+    </div>
+  </form>
+</div>

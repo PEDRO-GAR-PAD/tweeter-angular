@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user/User';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-user',
@@ -9,28 +8,30 @@ import { Router } from '@angular/router';
   styleUrls: ['./new-user.component.css']
 })
 export class NewUserComponent {
+  myNewUser: User = {
+    id: 0,
+    email: '',
+    username: '',   // <-- AGREGA ESTA LÍNEA
+    password: '',
+    firstName: '',
+    lastName: ''
+  };
+  
+  message: string = '';
 
- constructor( private userService: UserService,
-	      private router: Router
-    )
- {
- }
+  constructor(private userService: UserService) {}
 
- myPayloadUser = new User();
- myNewUser = new User();
-
- createUser() {
-   console.log(this.myPayloadUser);
-
- this.myNewUser = this.userService.createUser(
-        this.myPayloadUser
-       );
-
- console.log(this.myNewUser);
-
- if (this.myNewUser.id != 0)
-        this.router.navigate(['/login']);
-
- }
-
+  /** Suscríbete al Observable para procesar la respuesta */
+  register(): void {
+    this.userService.createUser(this.myNewUser).subscribe({
+      next: user => {
+        this.myNewUser = user;
+        this.message = 'Usuario creado con éxito. ¡Ya puedes loguearte!';
+      },
+      error: err => {
+        console.error('Error creating user', err);
+        this.message = 'Error al crear el usuario. Intenta de nuevo.';
+      }
+    });
+  }
 }

@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Credential } from '../models/user/Credential';
 import { Router } from '@angular/router';
-import { Token } from '../models/user/Token';
-
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -11,32 +10,34 @@ import { Token } from '../models/user/Token';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  email: string = '';
+  password: string = '';
 
-    constructor( private userService: UserService,
-	         private router: Router
-    ) 
-    { } 
+  constructor(
+    private userService: UserService,
+    private storageService: StorageService,
+    private router: Router
+  ) {}
 
-    email : String = "adsoft@live.com.mx";
-    password : String = "123";
-    myLogin = new Token();
+  callLogin(): void {
+    const creds: Credential = {
+      email: this.email,
+      password: this.password
+    };
 
-    callLogin() {
-
-      //alert("login..."); 
-     
-     var myCredential = new Credential();
-      
-     myCredential.email = this.email;
-     myCredential.password = this.password;
- 
-     this.myLogin = this.userService.postLogin(
-        myCredential 
-       );   
-     if (this.myLogin.token != "")
+    this.userService.postLogin(creds).subscribe({
+      next: data => {
+        console.log('user logged:', data);
+        this.storageService.setSession('username', data.username);
+        this.storageService.setSession('token', data.accessToken);
         this.router.navigate(['/home']);
-
-     console.log(this.myLogin);
-
-    } 
+      },
+      error: err => {
+        console.error('login error', err);
+        alert('Login failed: ' + (err.error?.message || err.message));
+        this.email = '';
+        this.password = '';
+      }
+    });
+  }
 }

@@ -1,0 +1,123 @@
+/* new-user-form.component.css */
+.new-user-form {
+  --card-width: 380px;
+
+  background: var(--vr-panel);
+  border-radius: var(--vr-radius);
+  box-shadow: 0 12px 40px var(--vr-shadow);
+  max-width: var(--card-width);
+  margin: 4em auto;
+  padding: 2.5em 2em;
+  position: relative;
+  color: var(--vr-text);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.new-user-form::before {
+  content: '';
+  position: absolute;
+  top: -1.5em;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3em;
+  height: 3em;
+  background: var(--vr-lime);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--vr-shadow);
+}
+
+.new-user-form h2 {
+  text-align: center;
+  margin-bottom: 1.5em;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--vr-gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1.4em;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2em;
+}
+
+.field-group label {
+  margin-bottom: 0.4em;
+  font-size: 0.95em;
+  letter-spacing: 1px;
+  color: var(--vr-lime);
+  text-transform: uppercase;
+}
+
+.field-group input {
+  background: var(--vr-bg);
+  border: 2px solid var(--vr-gold);
+  border-radius: var(--vr-radius);
+  padding: 0.75em 1em;
+  font-size: 1em;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field-group input:focus {
+  outline: none;
+  border-color: var(--vr-lime);
+  box-shadow: 0 0 6px var(--vr-lime);
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 0.9em 0;
+  margin-top: 0.8em;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.05em;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  background: var(--vr-gold);
+  color: var(--vr-bg);
+  border: none;
+  border-radius: var(--vr-radius);
+  cursor: pointer;
+  box-shadow: 0 4px 14px var(--vr-shadow);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.btn-submit:hover {
+  background: var(--vr-lime);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.info {
+  margin: 1em 0 0.5em;
+  padding: 0.6em 1em;
+  background: var(--vr-overlay);
+  border-left: 4px solid var(--vr-lime);
+  border-radius: 4px;
+  font-size: 0.95em;
+  color: var(--vr-gold);
+  text-align: center;
+}
+
+.link-back {
+  display: block;
+  text-align: center;
+  margin-top: 1em;
+  color: var(--vr-gold);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.95em;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.link-back:hover {
+  color: var(--vr-lime);
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .new-user-form {
+    margin: 2em 1em;
+    padding: 2em 1em;
+    max-width: 100%;
+  }
+}

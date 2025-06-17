@@ -1,23 +1,36 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { UserService } from '../services/user.service';
+import { User } from '../models/user/User';
+import { Router } from '@angular/router';
 
-import { NewUserComponent } from './new-user.component';
+@Component({
+  selector: 'app-new-user',
+  templateUrl: './new-user.component.html',
+  styleUrls: ['./new-user.component.css']
+})
+export class NewUserComponent {
 
-describe('NewUserComponent', () => {
-  let component: NewUserComponent;
-  let fixture: ComponentFixture<NewUserComponent>;
+ constructor( private userService: UserService,
+	      private router: Router
+    ) 
+ {
+ } 
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [NewUserComponent]
-    })
-    .compileComponents();
+ myPayloadUser = new User();
+ myNewUser = new User();
 
-    fixture = TestBed.createComponent(NewUserComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+ createUser() {
+   console.log(this.myPayloadUser);
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+ this.myNewUser = this.userService.createUser(
+        this.myPayloadUser
+       );
+ 
+ console.log(this.myNewUser);
+
+ if (this.myNewUser.id != 0)
+        this.router.navigate(['/login']);
+
+ } 
+
+}

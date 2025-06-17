@@ -1,0 +1,190 @@
+/* home.component.css */
+
+/* 1) Contenedor principal */
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* 2) Mensaje de bienvenida más grande */
+.welcome {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--vr-text);
+  margin-bottom: 1.5rem;
+  font-size: 2rem;         /* incremento de tamaño */
+  text-align: center;
+}
+
+/* 3) Paneles (Nuevo tweet + Timeline) */
+.panel {
+  background: var(--vr-panel);
+  border-radius: var(--vr-radius);
+  box-shadow: 0 4px 16px var(--vr-shadow);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.panel h2 {
+  background: var(--vr-gold);
+  color: var(--vr-bg);
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+}
+
+/* 4) Formulario “Nuevo Tweet” */
+.new-tweet-form {
+  display: flex;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+.new-tweet-form input {
+  flex: 1;
+  background: var(--vr-bg);
+  border: 2px solid var(--vr-lime);
+  border-radius: var(--vr-radius);
+  padding: 0.6rem 1rem;
+  color: var(--vr-text);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.btn-tweet {
+  background: var(--vr-lime);
+  color: var(--vr-bg);
+  border: none;
+  border-radius: var(--vr-radius);
+  padding: 0.6rem 1.4rem;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-tweet:hover {
+  background: #b5e600;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* 5) Tarjeta de cada tweet con marco luminoso */
+.tweet-card {
+  background: var(--vr-bg);
+  border: 2px solid var(--vr-gold);
+  border-radius: var(--vr-radius);
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 0 2px 8px var(--vr-shadow);  /* sólo sombra suave */
+  transition: box-shadow 0.2s;
+}
+.tweet-card:hover {
+  box-shadow: 0 4px 16px var(--vr-shadow); /* sombra más intensa al hover */
+}
+
+.tweet-header {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--vr-gold);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.tweet-author {
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--vr-lime);
+  margin-bottom: 0.8rem;
+}
+
+/* 6) Reacciones */
+.tweet-reactions {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+.tweet-reactions button {
+  position: relative;
+  background: var(--vr-panel);
+  border: 2px solid var(--vr-lime);
+  border-radius: var(--vr-radius);
+  padding: 0.4rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  color: var(--vr-lime);
+  display: flex;
+  align-items: center;
+}
+.tweet-reactions button .count {
+  margin-left: 0.3rem;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--vr-text);
+  font-size: 0.9rem;
+}
+.tweet-reactions button.active {
+  background: var(--vr-lime);
+}
+
+.tweet-reactions button.active .count {
+  color: #000;
+}
+.tweet-reactions button:hover {
+  transform: scale(1.1);
+}
+
+/* 7) Comentarios */
+.comments {
+  background: var(--vr-panel);
+  padding: 1rem;
+  border-top: 1px solid var(--vr-gold);
+}
+.comment {
+  margin-bottom: 0.8rem;
+}
+.comment small {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--vr-gold);
+}
+.comment p {
+  margin: 0.3rem 0 0.5rem 0;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* 8) Formulario de comentario */
+.comment-form {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+.comment-form input {
+  flex: 1;
+  background: var(--vr-bg);
+  border: 2px solid var(--vr-gold);
+  border-radius: var(--vr-radius);
+  padding: 0.5rem 1rem;
+  color: var(--vr-text);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+.comment-form button {
+  background: var(--vr-lime);
+  border: none;
+  border-radius: var(--vr-radius);
+  padding: 0.5rem 1rem;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--vr-bg);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+.comment-form button:hover {
+  background: #b5e600;
+  transform: translateY(-2px);
+}
+
+/* 9) Responsive ligero */
+@media (max-width: 768px) {
+  .home-container {
+    padding: 1rem;
+  }
+  .new-tweet-form {
+    flex-direction: column;
+  }
+  .tweet-card {
+    margin: 1rem 0;
+  }
+  .tweet-reactions {
+    flex-wrap: wrap;
+  }
+}

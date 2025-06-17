@@ -1,1 +1,67 @@
-<p>home works!</p>
+<!-- home.component.html -->
+<div class="home-container">
+  <p class="welcome">Welcome {{ username }}</p>
+
+  <!-- NUEVO TWEET -->
+  <section class="panel new-tweet">
+    <h2>Nuevo Tweet</h2>
+    <form (ngSubmit)="addTweet()" class="new-tweet-form">
+      <input
+        type="text"
+        placeholder="Your tweet here..."
+        [(ngModel)]="tweetText"
+        name="tweetText"
+        required
+      />
+      <button type="submit" class="btn-tweet">Tweet</button>
+    </form>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="panel timeline">
+    <h2>Timeline</h2>
+    <div *ngFor="let tweet of tweets" class="tweet-card">
+      <div class="tweet-header">
+        #{{ tweet.id }} – {{ tweet.tweet }}
+      </div>
+      <div class="tweet-author">
+        &#64;{{ tweet.postedBy?.username }}
+      </div>
+
+      <div class="tweet-reactions">
+        <button
+          *ngFor="let rt of reactionTypes"
+          type="button"
+          (click)="react(tweet.id, rt.id)"
+          [class.active]="userReactions[tweet.id] === rt.id"
+        >
+          {{ reactionEmojis[rt.description] }}
+          <span class="count">
+            {{ reactionCounts[tweet.id]?.[rt.description] || 0 }}
+          </span>
+        </button>
+      </div>
+
+      <div class="comments">
+        <div
+          *ngFor="let c of commentsMap[tweet.id] || []"
+          class="comment"
+        >
+          <small>{{ c.user.username }} dijo:</small>
+          <p>{{ c.content }}</p>
+        </div>
+
+        <form (ngSubmit)="addComment(tweet.id)" class="comment-form">
+          <input
+            type="text"
+            placeholder="Agrega un comentario..."
+            [(ngModel)]="newCommentText[tweet.id]"
+            name="comment-{{ tweet.id }}"
+            required
+          />
+          <button type="submit">Publicar</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>

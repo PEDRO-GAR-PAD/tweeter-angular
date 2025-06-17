@@ -1,1 +1,36 @@
-<p>landing-page works!</p>
+<!-- posts-list.component.html -->
+<div class="posts-container">
+  <h2>Publicaciones recientes</h2>
+  <div class="posts-list">
+    <div *ngFor="let tweet of tweets" class="post-card">
+      <div class="post-header">
+        <span class="post-id">#{{ tweet.id }}</span>
+        <!-- uso de &#64; para que Angular no lo confunda -->
+        <span class="post-user">&#64;{{ tweet.postedBy?.username }}</span>
+      </div>
+      <p class="post-content">{{ tweet.tweet }}</p>
+      
+      <div class="post-reactions">
+        <div *ngFor="let rt of reactionTypes" class="reaction">
+          <span class="emoji">{{ reactionEmojis[rt.description] }}</span>
+          <span 
+            *ngIf="reactionCounts[tweet.id]?.[rt.description]" 
+            class="count"
+          >
+            {{ reactionCounts[tweet.id][rt.description] }}
+          </span>
+        </div>
+      </div>
+      
+      <div class="post-comments">
+        <div 
+          *ngFor="let c of commentsMap[tweet.id] || []" 
+          class="comment"
+        >
+          <div class="comment-author">{{ c.user.username }} dice:</div>
+          <div class="comment-content">{{ c.content }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

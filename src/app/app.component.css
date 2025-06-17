@@ -1,0 +1,38 @@
+s.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--vr-panel);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px var(--vr-shadow);
+  border-bottom: 2px solid var(--vr-lime);
+}
+
+.site-title {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--vr-gold);
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.btn-login {
+  font-family: 'Share Tech Mono', monospace;
+  background: var(--vr-lime);
+  color: var(--vr-bg);
+  border: 2px solid var(--vr-lime);
+  border-radius: var(--vr-radius);
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-login:hover {
+  background: #b5e600;
+  transform: translateY(-2px);
+}
+
+.app-content {
+  padding: 2rem;
+}

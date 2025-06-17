@@ -1,7 +1,9 @@
-export class User {
-    id: Number = 0;
-    email: String = "";
-    password: String = "";
-    firstName: String = "";
-    lastName: String = "";
-}
+export interface User {
+    id: number;
+    email: string;
+    username: string;   // <-- AGREGA ESTA LÍNEA
+    password: string;
+    firstName?: string;
+    lastName?: string;
+  }
+  

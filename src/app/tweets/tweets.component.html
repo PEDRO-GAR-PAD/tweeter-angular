@@ -1,1 +1,33 @@
-<p>tweets works!</p>
+<div class="tweets-container">
+  <!-- Formulario para crear un nuevo tweet -->
+  <form (ngSubmit)="addTweet()" class="tweet-form">
+    <input
+      type="text"
+      [(ngModel)]="tweetText"
+      name="tweetText"
+      placeholder="¿Qué está pasando?"
+      required
+      class="tweet-input"
+    />
+    <button type="submit" class="tweet-btn">Twittear</button>
+  </form>
+
+  <!-- Listado de tweets -->
+  <div class="tweet" *ngFor="let tweet of tweets">
+    <p class="tweet-content">{{ tweet.id }} – {{ tweet.tweet }}</p>
+    
+    <div class="reactions">
+      <!-- Un botón por cada tipo de reacción -->
+      <button
+        *ngFor="let rt of reactionTypes"
+        (click)="react(tweet.id, rt.id)"
+        class="reaction-btn"
+      >
+        {{ rt.description }}
+        <span *ngIf="reactionCounts[tweet.id]?.[rt.description]">
+          ({{ reactionCounts[tweet.id][rt.description] }})
+        </span>
+      </button>
+    </div>
+  </div>
+</div>

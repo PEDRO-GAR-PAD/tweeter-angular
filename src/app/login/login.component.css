@@ -1,0 +1,125 @@
+/* login-card.component.css */
+
+.login-card {
+  --card-width: 360px;
+
+  background: var(--vr-panel);
+  border-radius: var(--vr-radius);
+  box-shadow: 0 8px 32px var(--vr-shadow);
+  width: var(--card-width);
+  margin: 4em auto;
+  padding: 2em 1.8em;
+  color: var(--vr-text);
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.login-card h2 {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--vr-gold);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 1.5em;
+  font-size: 1.3em;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.1em;
+}
+
+.form-row label {
+  margin-bottom: 0.4em;
+  font-size: 0.95em;
+  color: var(--vr-lime);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.form-row input {
+  padding: 0.75em 1em;
+  font-size: 1em;
+  border: 2px solid var(--vr-gold);
+  border-radius: var(--vr-radius);
+  background: var(--vr-bg);
+  color: var(--vr-text);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-row input:focus {
+  outline: none;
+  border-color: var(--vr-lime);
+  box-shadow: 0 0 6px var(--vr-lime);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8em;
+}
+
+.form-actions button {
+  flex: 1;
+  padding: 0.9em 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.05em;
+  text-transform: uppercase;
+  background: var(--vr-lime);
+  color: var(--vr-bg);
+  border: none;
+  border-radius: var(--vr-radius);
+  cursor: pointer;
+  box-shadow: 0 3px 12px var(--vr-shadow);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.form-actions button:hover {
+  background: #b5e600;
+  transform: translateY(-2px) scale(1.02);
+}
+
+.form-actions a {
+  margin-left: 1em;
+  color: var(--vr-gold);
+  font-size: 0.95em;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.form-actions a:hover {
+  color: var(--vr-lime);
+}
+
+.form-links {
+  text-align: center;
+  margin-top: 1.2em;
+  font-size: 0.9em;
+}
+
+.form-links a {
+  color: var(--vr-gold);
+  text-decoration: none;
+  margin: 0 0.3em;
+  transition: color 0.2s;
+}
+
+.form-links a:hover {
+  color: var(--vr-lime);
+}
+
+.form-links span {
+  color: var(--vr-text);
+}
+
+@media (max-width: 500px) {
+  .login-card {
+    width: 90%;
+    margin: 2em auto;
+    padding: 1.5em 1em;
+  }
+  .login-card h2 {
+    font-size: 1.1em;
+  }
+}
